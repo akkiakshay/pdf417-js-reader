@@ -13,8 +13,8 @@ function usePDFCode(options: MediaTrackConstraints) {
   const [ result, setResult ] = useState<string | null>(null)
   const [ did,setDid] = useState<string>("")
   const { stream, error } = useUserMedia({ audio: false, video: {
-    height:768,
-    width: 1366,
+    height:{min: 360 ,ideal:720, max: 900},
+    width:{min: 640 ,ideal:1280, max: 1600},
     facingMode: 'environment',
     aspectRatio: 9/16,
     ...options,
@@ -24,7 +24,7 @@ function usePDFCode(options: MediaTrackConstraints) {
  
 
   const codeReader = new BrowserMultiFormatReader();
-  codeReader.listVideoInputDevices().then((a) => setDid(a[1].deviceId))
+ // codeReader.listVideoInputDevices().then((a) => setDid(a[1].deviceId))
 
  
 
